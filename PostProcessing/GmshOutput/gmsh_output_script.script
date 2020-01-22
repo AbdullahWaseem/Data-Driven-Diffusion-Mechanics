@@ -1,0 +1,29 @@
+// read the reference pdf file.
+
+General.GraphicsWidth = 1600;
+General.GraphicsHeight = 340;
+General.SmallAxes = 0;
+Mesh.SurfaceEdges = 0;
+General.DisplayBorderFactor = 0;
+View.ShowScale = 0;
+General.Axes = 0;
+General.MenuWidth = 0;
+PATH = "./"
+
+NUM_FRAMES = 1;
+For i In {1:PostProcessing.NbViews}
+  View[i-1].TimeStep = 0;
+  // compute max num of steps
+  If(View[i-1].Visible)
+    If(View[i-1].NbTimeStep > NUM_FRAMES)
+      NUM_FRAMES = View[i-1].NbTimeStep;
+    EndIf
+  EndIf
+EndFor
+For index In {1:NUM_FRAMES}
+  Draw;
+  Print StrCat( Sprintf("./ %03g.png", index));
+  For i In {1:PostProcessing.NbViews}
+    View[i-1].TimeStep++;
+  EndFor
+EndFor
