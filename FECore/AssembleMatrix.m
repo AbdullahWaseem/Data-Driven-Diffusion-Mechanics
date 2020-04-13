@@ -16,8 +16,8 @@ function [ barK ] = AssembleMatrix( egnn, nne, tne, eK)
 % Length of the C,R and V columns   len = (#nodes in X) x (#nodes in Y) x tne
 len = nne * nne * tne;
 % Initializing the location and storage vectors.
-Ridx = zeros(len,1);       
-Cidx = zeros(len,1);      
+Ridx = zeros(len,1);
+Cidx = zeros(len,1);
 VK = zeros(len, 1);
 % Indexer
 idx = 1;

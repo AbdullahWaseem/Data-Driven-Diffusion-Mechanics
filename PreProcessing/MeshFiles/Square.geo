@@ -1,13 +1,13 @@
 //
 L = 1; 			//length of the unit-cell, the units are arbitrary, multiply accordingly		
 r = 0.25;		//the radius of the circle
-ne = 4; 		//the number of elements in each direction
+ne = 1; 		//the number of elements in each direction
 mesh_size = L/ne;	//this the general size of the mesh. change this value if more elements are requried arround a point
 
 //points are defined first
 Point(1) = {0,0,0,mesh_size}; 		//points for square
-Point(2) = {L,0,0,mesh_size};		//
-Point(3) = {L,L,0,mesh_size};		//
+Point(2) = {L*10,0,0,mesh_size};		//
+Point(3) = {L*10,L,0,mesh_size};		//
 Point(4) = {0,L,0,mesh_size};		//
 //Point(5) = {L,L,0,mesh_size};	
 

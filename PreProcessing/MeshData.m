@@ -48,8 +48,17 @@ left_egnn     = msh.ELE_NODES(left_e_itrt,   1:nnbe);
 % We will not use structure msh again so clearing it 
 clear msh
 
+%% Plotting the mesh.
+% Uncomment if needed.
+% figure(1)
+% pdeplot(xy(:,1:2)',[],[egnn ones(size(egnn,1),1)]','Mesh','on');
+% axis tight
+
 %% 
 disp(' ')
 disp(['Number of Elements : ' num2str(tne)]);
 disp(['Number of Nodes    : ' num2str(tnn)]);
 disp(' ')
+
+
+

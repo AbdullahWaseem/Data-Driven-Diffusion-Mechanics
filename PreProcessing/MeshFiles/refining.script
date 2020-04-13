@@ -6,4 +6,4 @@ Mesh.RecombinationAlgorithm = 0; 		// 0=Standard, 1=Blossom
 Mesh.RecombineAll = 0; 					// 1=quad, 0=triangle
 Mesh.SubdivisionAlgorithm = 0; 			// 0=none, 1=all quads
 Mesh.Smoothing = 10;					// number of smoothenning steps. 
-Mesh.CharacteristicLengthFactor = 0.5; 	// characteristic element length w.r.t. .geo file.
+Mesh.CharacteristicLengthFactor = 0.25; 	// characteristic element length w.r.t. .geo file.
