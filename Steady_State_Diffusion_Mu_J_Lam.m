@@ -9,6 +9,7 @@
 % -----------------------
 %
 % Equation: $\nabla\cdot j =0$ where $j=-M\cdot\nabla\mu$ is assumed.
+% j: flux vector, M: mobility tensor, mu: chemical potential.
 
 %% Initializing Code
 
@@ -58,7 +59,7 @@ prvDis  = 1;
 % -----------------------------------------------
 
 % Data-set S (this data should comply with the boundary conditions)
-gradMu_prm = linspace(-0.1,0,nDP+1);
+gradMu_prm = linspace(-0.1,0.0001,nDP+1);
 % gradMu_prm(find(gradMu_prm==0))=gradMu_prm(find(gradMu_prm==0)-1);
   tenJ_prm = linspace(Mref(1,1)*abs(min(gradMu_prm)),-Mref(1,1)*abs(max(gradMu_prm)),nDP+1);
 
@@ -126,11 +127,11 @@ fl = fl';
 Kmmpp = barK(pm,pm); Kmmpf = barK(pm,fm); Kmmfp = barK(fm,pm); Kmmff = barK(fm,fm);
 % Stiffness Matrix for Lam
 Kllpp = barK(pl,pl); Kllpf = barK(pl,fl); Kllfp = barK(fl,pl); Kllff = barK(fl,fl);
-% Internal Flux Vemtor for Mu
+% Internal Flux Vector for Mu
 Fg_p_str = barFg_str(pm,1); Fg_f_str = barFg_str(fm,1);
-% Internal Flux Vemtor for Lam
+% Internal Flux Vector for Lam
 Fj_p_str = barFj_str(pl,1); Fj_f_str = barFj_str(fl,1);
-% External Flux Vemtor (appear in Lam problem only).
+% External Flux Vector (appear in Lam problem only).
 rF = zeros(tnn,1); rFp = rF(pl,1); rFf = rF(fl,1);
 % <-----
 

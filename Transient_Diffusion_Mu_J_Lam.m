@@ -11,6 +11,7 @@
 % Equation: $\dot{\mu} + \nabla\cdot j =0$ 
 % $j=-M\cdot\nabla\mu$ and $\mu = \Lambda c$
 % $\mathcal{D}=\Lambda M$
+% j: flux vector, M: mobility tensor, mu: chemical potential, \Lambda: chemical modulus, c: concentration
 
 %% Initializing Code
 
@@ -70,7 +71,7 @@ prvDis  = 1;
 % -----------------------------------------------
 
 % Data-set S (this data should comply with the boundary conditions)
-gradMu_prm = linspace(-1,0,nDP+1);
+gradMu_prm = linspace(-1,0.0001,nDP+1);
 % gradMu_prm(find(gradMu_prm==0))=gradMu_prm(find(gradMu_prm==0)-1);
   tenJ_prm = linspace(Dref(1,1)*abs(min(gradMu_prm)),-Dref(1,1)*abs(max(gradMu_prm)),nDP+1);
 
@@ -90,9 +91,9 @@ drawnow
     % Initializing
     gradMu_str = zeros(tne,ngp);
     tenJ_str  = gradMu_str;
-%     % Assigning data randomnly
-%     gradMu_str(:,:) = gradMu_prm(RanMat(:,:));
-%       tenJ_str(:,:) =   tenJ_prm(RanMat(:,:));
+    % Assigning data randomnly
+    gradMu_str(:,:) = gradMu_prm(RanMat(:,:));
+      tenJ_str(:,:) =   tenJ_prm(RanMat(:,:));
 
 %% Finite Element Calculations
 
@@ -217,11 +218,11 @@ for n = 2 : length(tItrt)
 
                 % FIND ROTATIONS
                 % --------------
-                % Numerical
-                [rot,~] = findrotationNR(gradMu,[gradMu_str(en,gs) 0]',tenJ,[tenJ_str(en,gs) 0]',Dref);
-%                 % Analytical
-%                 rot = -atan( (gradMu_str(en,gs)*gradMu(2)*Dref(1,1) + tenJ_str(en,gs)*tenJ(2)*1/Dref(1,1)) / ...
-%                              (gradMu_str(en,gs)*gradMu(1)*Dref(1,1) + tenJ_str(en,gs)*tenJ(1)*1/Dref(1,1)) );
+%                 % Numerical
+%                 [rot,~] = findrotationNR(gradMu,[gradMu_str(en,gs) 0]',tenJ,[tenJ_str(en,gs) 0]',Dref);
+                % Analytical (CAREFUL ABOUT THE ZERO IN THE DENOMINATOR)
+                rot = -atan( (gradMu_str(en,gs)*gradMu(2)*Dref(1,1) + tenJ_str(en,gs)*tenJ(2)*1/Dref(1,1)) / ...
+                             (gradMu_str(en,gs)*gradMu(1)*Dref(1,1) + tenJ_str(en,gs)*tenJ(1)*1/Dref(1,1)) );
 
                 % Rotation Matrix
                 Q = [ cos(rot) -sin(rot); sin(rot)  cos(rot)];
