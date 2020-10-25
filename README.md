@@ -24,4 +24,4 @@ This code is purely for educational purposes. All rights are preseved, however, 
 ## Cite this work
 Please don't forget to cite this work as 
 
-Waseem, A. (2020) A Matlab implementation of data-driven diffusion mechanics for steady-state and transient diffusion problems. Retrieved from [https://github.com/AbdullahWaseem/Data-Driven-Diffusion-Mechanics]{https://github.com/AbdullahWaseem/Data-Driven-Diffusion-Mechanics}
+Waseem, A. (2020) A Matlab implementation of data-driven diffusion mechanics for steady-state and transient diffusion problems. Retrieved from https://github.com/AbdullahWaseem/Data-Driven-Diffusion-Mechanics
